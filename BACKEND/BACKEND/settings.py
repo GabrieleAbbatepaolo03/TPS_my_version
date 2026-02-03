@@ -167,8 +167,12 @@ SIMPLE_JWT = {
 }
 
 # CORS settings for development
-CORS_ALLOW_ALL_ORIGINS = True  # For development only
+# WARNING: CORS_ALLOW_ALL_ORIGINS should be False in production
+# Use environment variables to control CORS settings
+CORS_ALLOW_ALL_ORIGINS = DEBUG  # Only allow all origins in debug mode
 CORS_ALLOW_CREDENTIALS = True
+
+# For production, specify exact allowed origins
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:8080",

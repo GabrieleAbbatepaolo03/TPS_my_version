@@ -95,12 +95,13 @@ class UserProfileView(APIView):
     
     def put(self, request):
         """
-        Update current user's profile.
+        Fully update current user's profile.
+        All fields must be provided for a complete update.
         """
         serializer = UserSerializer(
             request.user,
             data=request.data,
-            partial=True
+            partial=False  # Require all fields for PUT
         )
         serializer.is_valid(raise_exception=True)
         serializer.save()
@@ -112,11 +113,12 @@ class UserProfileView(APIView):
     def patch(self, request):
         """
         Partially update current user's profile.
+        Only provided fields will be updated.
         """
         serializer = UserSerializer(
             request.user,
             data=request.data,
-            partial=True
+            partial=True  # Allow partial updates for PATCH
         )
         serializer.is_valid(raise_exception=True)
         serializer.save()
