@@ -271,11 +271,15 @@ FRONTEND/
 ## Dependencies
 
 ```
-Django==5.2.7
+Django==5.2.8
 djangorestframework==3.14.0
 djangorestframework-simplejwt==5.3.1
 django-cors-headers==4.3.1
 ```
+
+**Note**: Django 5.2.8 is used to patch security vulnerabilities present in 5.2.7:
+- CVE: Denial-of-service vulnerability in HttpResponseRedirect and HttpResponsePermanentRedirect on Windows
+- CVE: SQL injection via _connector keyword argument in QuerySet and Q objects
 
 ## Production Considerations
 
